@@ -1,0 +1,13 @@
+# download files from blob next folder:
+```
+$RGName = "your resource group name"
+$SAName = "your storage account name"
+$ConName = "your container name"
+$key = "your storage account key"
+$Ctx = New-AzureStorageContext -StorageAccountName $SAName -StorageAccountKey $Key
+$List = Get-AzureStorageBlob -prefix "20171019/fac/" -Container $ConName -Context $Ctx
+$List = $List.name
+foreach ( $l in $list ){
+Get-AzureStorageBlobContent -Blob $l -Container $conname -Context $ctx
+}
+```
